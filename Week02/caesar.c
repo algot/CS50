@@ -11,7 +11,7 @@ int main(int argc, string argv[])
     // Check if correct # of arguments given
     if (argc != 2 && !isdigit(argv[1]))
     {
-        printf ("Wrong number of arguments. Please try again.\n");
+        printf ("Incorrect argument!\n");
 
         return 1;
     }
@@ -19,26 +19,32 @@ int main(int argc, string argv[])
     // Convert input to int type
     int k = atoi(argv[1]);
 
-    // Get text to encode
-    string p = GetString();
+    string input = GetString();
 
-    // Loop through text
-    for (int i = 0, n = strlen(p); i < n; i++)
-    {            
+    for (int i = 0, n = strlen(input); i < n; i++)
+    {
+        char current_char = input[i];
         // Keep case of letter
-        if (isupper(p[i]))
+        if (isupper(current_char))
         {
-            // Get modulo number and add to appropriate case
-            printf("%c", 'A' + (p[i] - 'A' + k) % 26);
+            int offset_from_A_initial = current_char - 'A';
+            int offset_from_A_processed = offset_from_A_initial + k;
+            int module = offset_from_A_processed % 26;
+               
+            printf("%c", 'A' + module);
         }
-        else if (islower(p[i]))
+        else if (islower(current_char))
         {
-            printf("%c", 'a' + (p[i] - 'a' + k) % 26);
+            int offset_from_a_initial = current_char - 'a';
+            int offset_from_a_processed = offset_from_a_initial + k;
+            int module = offset_from_a_processed % 26;
+
+            printf("%c", 'a' + module);
         }
         else
         {
             // return unchanged
-            printf("%c", p[i]);
+            printf("%c", current_char);
         }
     }
 
@@ -46,51 +52,3 @@ int main(int argc, string argv[])
 
     return 0;
 }
-
-/*#include <cs50.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-
-int main(int argc, string argv[])
-{
-    if (argc == 2 && isdigit(argv[1]))
-    {
-        int k = atoi(argv[1]);
-        
-        printf("Enter some text: \n");
-        string input = GetString();
-        
-        
-        for (int i = 0, n = strlen(input); i < n; i++)
-        {
-            // Process uppercases letters
-            if  (isupper(input[i]))
-            {
-                int offsetFromAInitial = input[i] - 'A';
-                int offsetFromAProcessed = offsetFromAInitial + k;
-                int module = offsetFromAProcessed % 26;
-                
-                printf("%c", 'A' + module);
-            }
-            char currentChar = input[i];
-            char modifiedChar = currentChar + k;
-            if ('Z' < modifiedChar < 'a')
-            {
-                modifiedChar -= 26;
-            }
-            printf("%c\n", currentChar);
-            printf("%c\n", modifiedChar);
-            */
-            /*
-        }
-        
-        return 0;
-    }
-    else
-    {
-        printf("Incorrect argument(s)!");
-        return 1;
-    }
-}*/
