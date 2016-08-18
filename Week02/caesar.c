@@ -1,5 +1,3 @@
-// Caesar cipher
-
 #include <cs50.h>
 #include <ctype.h>
 #include <stdio.h>
@@ -8,7 +6,6 @@
 
 int main(int argc, string argv[])  
 {
-    // Check if correct # of arguments given
     if (argc != 2 && !isdigit(argv[1]))
     {
         printf ("Incorrect argument!\n");
@@ -16,7 +13,6 @@ int main(int argc, string argv[])
         return 1;
     }
 
-    // Convert input to int type
     int k = atoi(argv[1]);
 
     string input = GetString();
@@ -24,7 +20,7 @@ int main(int argc, string argv[])
     for (int i = 0, n = strlen(input); i < n; i++)
     {
         char current_char = input[i];
-        // Keep case of letter
+
         if (isupper(current_char))
         {
             int offset_from_A_initial = current_char - 'A';
@@ -43,7 +39,6 @@ int main(int argc, string argv[])
         }
         else
         {
-            // return unchanged
             printf("%c", current_char);
         }
     }
