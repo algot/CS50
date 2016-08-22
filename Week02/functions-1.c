@@ -13,7 +13,7 @@ int main(void)
 int GetPositiveInt(void)
 {
     int n;
-    do  
+    do
     {
         printf("Please give ma a positive int: ");
         n = GetInt();

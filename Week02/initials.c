@@ -4,18 +4,17 @@
 #include <string.h>
 
 bool is_wrong_char(char);
-    
+
 int main(void)
 {
-
-	string name = GetString();
+    string name = GetString();
 
     char firstChar = name[0];
     if (is_wrong_char(firstChar))
     {
         printf("%c", toupper(firstChar));
     }
-    
+
     for (int i=1, n=strlen(name); i < n; i++)
     {
         char currentChar = name[i];
@@ -24,10 +23,10 @@ int main(void)
             printf("%c", toupper(currentChar));
         }
     }
-    
+
     printf("\n");
-  
-	return 0;
+
+    return 0;
 }
 
 bool is_wrong_char(char charToCheck)
@@ -36,7 +35,7 @@ bool is_wrong_char(char charToCheck)
     {
         return true;
     }
-    else 
+    else
     {
         return false;
     }

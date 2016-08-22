@@ -21,12 +21,10 @@ int main(int argc, string argv[])
             if (!isalpha(key[i]))
             {
                 printf("Enter alphabetic chars only!\n");
-                
                 return 1;
             }
         }
     }
-    
     int keyLength = strlen(key);
     string input = GetString();
 
@@ -35,13 +33,12 @@ int main(int argc, string argv[])
         char current_char = input[i];
 
         int currentKey = tolower(key[j % keyLength]) - 'a';
-        
+
         if (isupper(current_char))
         {
             int offset_from_A_initial = current_char - 'A';
             int offset_from_A_processed = offset_from_A_initial + currentKey;
             int module = offset_from_A_processed % 26;
-               
             printf("%c", 'A' + module);
         }
         else if (islower(current_char))

@@ -26,7 +26,7 @@ int main(int argc, string argv[])
             int offset_from_A_initial = current_char - 'A';
             int offset_from_A_processed = offset_from_A_initial + k;
             int module = offset_from_A_processed % 26;
-               
+
             printf("%c", 'A' + module);
         }
         else if (islower(current_char))
